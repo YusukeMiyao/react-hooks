@@ -1,11 +1,11 @@
 import React, { createContext, useState, useReducer, useEffect } from "react";
 import "./App.css";
-import { WrapComponent } from "./components/WrapComponent";
+import { Check } from "./components/Check";
 
 function App() {
   return (
     <div className="App">
-      <WrapComponent />
+      <Check />
     </div>
   );
 }
