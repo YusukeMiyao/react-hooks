@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-export const Count = React.memo(({ text, count }: any) => {
-  console.log("Count component -", text);
+export const Count = () => {
+  const [count, setCount] = useState(0);
+  const intervalRef = useRef<any>();
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 1000);
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, []);
   return (
     <div>
-      {text}:{count}
+      <h1>{count}</h1>
+      <button onClick={() => clearInterval(intervalRef.current)}>
+        ストップ
+      </button>
     </div>
   );
-});
+};
